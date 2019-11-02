@@ -1,0 +1,41 @@
+#This is some kind of model used to recive data, like an
+#interface or something. 🤔
+#
+# "!" means mandatory
+type User {
+    id: ID! 
+    name: String!
+    email: String!
+}
+
+#Querys: Querys can be used to recive information, like an
+#MySQL select, tho. 🤔
+#
+#About users:
+# -> Return ALL users on applications, it's a array.
+#[User!] ->  means every data recived from this array
+# MUST be a "User".
+#[User]! -> means this NEED TO return a array, can't
+#return a null value.
+#
+#About user:
+# -> Return a single just a user, using parammeters between
+#parenthesis.
+#id: ID! -> means its searching from DB using the id as
+#key, and it's return a single User model (type). User
+#dont have ! cuz if the search failed (invalid id, for ex), 
+#it CAN return a null value. 😁
+
+type Query {
+    users: [User!]!
+    user(id: ID!): User
+}                 
+
+#Mutations can be used to change data on backend/DB, like
+#an delete, alter, insert and etc.
+
+type Mutation {
+    createUser(name: String!, email: String!): User
+}
+
+#Note: it's not a route system, it's a SCHEMA. 🤔
